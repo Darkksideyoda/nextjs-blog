@@ -1,0 +1,31 @@
+{
+  "plugins": [
+    "react",
+    "react-hooks",
+    "prettier",
+    "@typescript-eslint",
+    "simple-import-sort",
+    "sort-destructure-keys",
+    "import",
+    "react-hooks"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "next",
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:react-hooks/recommended"
+  ],
+  "rules": {
+    "indent": ["error", 2],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "sort-destructure-keys/sort-destructure-keys": 2,
+    "import/no-unresolved": "error",
+    "no-console": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error"
+  } 
+}
