@@ -7,14 +7,16 @@
     "simple-import-sort",
     "sort-destructure-keys",
     "import",
-    "react-hooks"
+    "react-hooks",
+    "json-format"
   ],
   "extends": [
     "eslint:recommended",
     "next",
     "next/core-web-vitals",
     "prettier",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "plugin:storybook/recommended"
   ],
   "rules": {
     "indent": ["error", 2],
@@ -27,5 +29,5 @@
     "no-console": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error"
-  } 
+  }
 }
