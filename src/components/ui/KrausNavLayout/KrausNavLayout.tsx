@@ -14,7 +14,7 @@ const KrausNavLayout: FC<KrausNavLayoutProps> = () => {
         <KrausNavbar
           centerChildren={
             <>
-              <a>Navlink</a>
+              <a>sad</a>
             </>
           }
           rightChildren={
