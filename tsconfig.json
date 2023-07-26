@@ -34,7 +34,6 @@
     ".next/types/**/*.ts",
     "src/**/*.ts",
     "src/**/*.d.ts",
-    "src/**/*.d.ts"
   ],
   "exclude": ["node_modules"]
 }

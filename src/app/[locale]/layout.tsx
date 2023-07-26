@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { NextFont } from 'next/dist/compiled/@next/font';
 import { Inter } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { createTranslator, NextIntlClientProvider } from 'next-intl';
@@ -7,7 +8,7 @@ import { ReactNode } from 'react';
 import KrausNavLayout from '../../components/ui/KrausNavLayout/KrausNavLayout';
 import NextThemeProvider from '../../utils/next-themes/NextThemeProvider';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter: NextFont = Inter({ subsets: ['latin'] });
 
 type Props = {
   children: ReactNode;
