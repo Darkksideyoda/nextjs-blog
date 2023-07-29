@@ -25,7 +25,13 @@ const KrausAudioSwitcher: FC = () => {
   }
 
   return (
-    <motion.button onClick={handleThemeChange} whileHover={{ scale: 2.1 }} whileTap={{ scale: 0.9 }}>
+    <motion.button
+      name="Audio Switch Button"
+      aria-label="Theme Switch Button"
+      onClick={handleThemeChange}
+      whileHover={{ scale: 2.1 }}
+      whileTap={{ scale: 0.9 }}
+    >
       {theme === 'light' ? <AudioIcon /> : <AudioMuteIcon />}
     </motion.button>
   );

@@ -35,6 +35,8 @@ const KrausThemeSwitcher: FC = () => {
   return (
     <div className="tooltip-primary h-8 w-8 lg:tooltip lg:tooltip-bottom" data-tip={tooltipText}>
       <motion.button
+        name="Theme Switch Button"
+        aria-label="Theme Switch Button"
         onClick={handleThemeSwitcherOnClick}
         onMouseEnter={() => playHoverSfx()}
         onMouseLeave={() => stopHoverSfx()}
