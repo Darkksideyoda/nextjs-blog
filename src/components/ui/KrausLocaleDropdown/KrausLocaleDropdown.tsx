@@ -52,7 +52,7 @@ function KrausLocaleDropdown() {
       setShowLoader(false);
       clearInterval(modelInterval);
       clearTimeout(modelTimeOut);
-    }, 2000);
+    }, 1500);
   };
 
   return (
