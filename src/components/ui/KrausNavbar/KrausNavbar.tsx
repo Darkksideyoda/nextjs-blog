@@ -38,7 +38,7 @@ const KrausNavbar: FC<KrausNavbarProps> = (props: KrausNavbarProps) => {
         <div className="mx-2 hidden px-2 lg:block">
           <ul className="menu menu-horizontal">
             {React.Children.map(rightChildren, (rightChild, index) => (
-              <React.Fragment key={index}>{rightChild}</React.Fragment>
+              <li key={index}>{rightChild}</li>
             ))}
           </ul>
         </div>

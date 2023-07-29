@@ -1,18 +1,16 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import Error from 'next/error';
 
-import PageLayout from '../../components/example/PageLayout';
+// This page renders when a route is requested that doesn't match the
+// middleware and therefore doesn't have a locale associated with it.
 
-// Note that `app/[locale]/[...rest]/page.tsx`
-// is necessary for this page to render.
-
-export default function NotFoundPage() {
-  const t = useTranslations('NotFoundPage');
-
+export default function NotFound() {
   return (
-    <PageLayout title={t('title')}>
-      <p className="max-w-[460px]">{t('description')}</p>
-    </PageLayout>
+    <html lang="en">
+      <body>
+        <Error statusCode={404} />
+      </body>
+    </html>
   );
 }

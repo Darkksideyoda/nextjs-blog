@@ -72,10 +72,10 @@ function KrausLocaleDropdown() {
             'rounded-lg bg-teal-500/95 text-black': locale === 'en' && theme === 'dark'
           })}
         >
-          <a onClick={() => handleOnClick('en')}>
-            <Image width="30" src={UsaFlagIcon} alt="USA Flag" />
+          <button onClick={() => handleOnClick('en')}>
+            <Image width="20" src={UsaFlagIcon} alt="USA Flag" />
             {`${t('english_option')}`}
-          </a>
+          </button>
         </li>
         <li
           className={clsx({
@@ -83,10 +83,10 @@ function KrausLocaleDropdown() {
             'rounded-lg bg-teal-500/95 text-black': locale === 'tr' && theme === 'dark'
           })}
         >
-          <a onClick={() => handleOnClick('tr')}>
-            <Image width="30" src={TurkeyFlagIcon} alt="Turkey Flag" />
+          <button onClick={() => handleOnClick('tr')}>
+            <Image width="20" src={TurkeyFlagIcon} alt="Turkey Flag" />
             {`${t('turkish_option')}`}
-          </a>
+          </button>
         </li>
       </ul>
 

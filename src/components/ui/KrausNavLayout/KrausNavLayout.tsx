@@ -9,7 +9,7 @@ interface KrausNavLayoutProps {}
 const KrausNavLayout: FC<KrausNavLayoutProps> = () => {
   return (
     <div className="drawer">
-      <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+      <input aria-label="Left Menu Toggle" id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         <KrausNavbar
           centerChildren={
