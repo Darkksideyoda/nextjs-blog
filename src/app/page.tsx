@@ -12,7 +12,12 @@ export default function RootPage() {
     localStorage.setItem(bkLocaleKey, defaultLocale);
   }
 
-  localStorage.setItem('bk_useSound', 'true');
+  const bkUseSoundKey = 'bk_useSound';
+  const defaultUseSound = 'true';
+
+  if (!localStorage.getItem(bkUseSoundKey)) {
+    localStorage.setItem(bkUseSoundKey, defaultUseSound);
+  }
 
   redirect(translationLocaleStorage);
 }

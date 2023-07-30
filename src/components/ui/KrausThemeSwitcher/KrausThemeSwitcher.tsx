@@ -6,7 +6,7 @@ import React, { FC, useEffect, useState } from 'react';
 import { SfxPath } from '../../../constants/Sounds';
 import MoonIcon from '../icons/MoonIcon';
 import SunIcon from '../icons/SunIcon';
-import KrausSfxButton from '../KrausSfxButton/KrausSfxButton';
+import KrausSfxButton from '../KrausSfxComponents/KrausSfxButton/KrausSfxButton';
 
 const KrausThemeSwitcher: FC = () => {
   const t = useTranslations('navbar.settings_layout.theme_switcher');

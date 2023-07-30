@@ -4,7 +4,7 @@ import { HTMLMotionProps, motion } from 'framer-motion';
 import React, { FC, useContext } from 'react';
 import useSound from 'use-sound';
 
-import { KrausSfxContext, KrausSfxContextParams } from './Context';
+import { KrausSfxContext, KrausSfxContextParams } from '../Context';
 
 interface KrausSfxButtonProps extends HTMLMotionProps<'button'> {
   hoverSfxPath?: string;
