@@ -1,8 +1,20 @@
+'use client';
+
 import { redirect } from 'next/navigation';
 
 // This page only renders when the app is built statically (output: 'export')
 export default function RootPage() {
-  redirect('/en');
+  const bkLocaleKey = 'bk_locale';
+  const defaultLocale = 'en';
+  let translationLocaleStorage = localStorage.getItem(bkLocaleKey) || defaultLocale;
+
+  if (!localStorage.getItem(bkLocaleKey)) {
+    localStorage.setItem(bkLocaleKey, defaultLocale);
+  }
+
+  localStorage.setItem('bk_useSound', 'true');
+
+  redirect(translationLocaleStorage);
 }
 
 // export default function Home() {

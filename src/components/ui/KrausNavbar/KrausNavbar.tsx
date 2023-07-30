@@ -1,7 +1,9 @@
+import Image from 'next/image';
 import React, { FC } from 'react';
 
+import LogoImage from '../../../../public/Images/ppgithyb.png';
 interface KrausNavbarProps {
-  centerChildren: React.ReactNode;
+  centerChildren: React.ReactNode[];
   rightChildren: React.ReactNode;
 }
 
@@ -23,15 +25,13 @@ const KrausNavbar: FC<KrausNavbarProps> = (props: KrausNavbarProps) => {
             </svg>
           </label>
         </div>
-        <div className="mx-2 px-2">Navbar Title</div>
+        <div className="mx-2 px-2 max-lg:hidden">
+          <Image className="mask mask-squircle w-11" alt="Logo" src={LogoImage} />
+        </div>
       </div>
       <div>
         <div className="hidden flex-1 lg:block ">
-          <ul className="menu menu-horizontal">
-            {React.Children.map(centerChildren, (centerChild, index: number) => (
-              <li key={index}>{centerChild}</li>
-            ))}
-          </ul>
+          <ul className="menu menu-horizontal">{centerChildren}</ul>
         </div>
       </div>
       <div className="flex-1 justify-end">

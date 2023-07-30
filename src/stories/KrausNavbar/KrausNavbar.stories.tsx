@@ -11,11 +11,11 @@ type Story = StoryObj<typeof KrausNavbar>;
 
 export const Primary: Story = {
   args: {
-    centerChildren: (
+    centerChildren: [
       <>
-        <a>NavLink1</a>
+        <a key="1">NavLink1</a>
       </>
-    ),
+    ],
     rightChildren: (
       <>
         <button>NavButton</button>{' '}

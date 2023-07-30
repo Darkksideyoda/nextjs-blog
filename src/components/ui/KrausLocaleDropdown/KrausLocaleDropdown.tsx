@@ -23,6 +23,7 @@ function KrausLocaleDropdown() {
   const [playClickSfx] = useSound(SfxPath.buttonClickSfx ?? '', {
     volume: 0.4
   });
+
   const { theme } = useTheme();
   const [, startTransition] = useTransition();
   const locale = useLocale();
@@ -36,6 +37,7 @@ function KrausLocaleDropdown() {
     startTransition(() => {
       router.replace(newPath);
     });
+    localStorage.setItem('bk_locale', selectedLanguage);
   };
 
   const [showLoader, setShowLoader] = useState(false);
@@ -52,7 +54,7 @@ function KrausLocaleDropdown() {
       setShowLoader(false);
       clearInterval(modelInterval);
       clearTimeout(modelTimeOut);
-    }, 1500);
+    }, 2000);
   };
 
   return (
