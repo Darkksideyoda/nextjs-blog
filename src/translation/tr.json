@@ -8,6 +8,10 @@
       "locale_dropdown": {
         "english_option": " İngilizce",
         "turkish_option": " Türkçe"
+      },
+      "audio_switcher": {
+        "mute_audio": "Tüm Sesleri Kapatın",
+        "unmute_audio": "Tüm Sesleri Açın"
       }
     }
   },
