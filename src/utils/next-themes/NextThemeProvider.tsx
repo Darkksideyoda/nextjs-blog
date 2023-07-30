@@ -20,5 +20,5 @@ export default function NextThemeProvider(props: Props) {
     return null;
   }
 
-  return <ThemeProvider>{children}</ThemeProvider>;
+  return <ThemeProvider defaultTheme={'light'}>{children}</ThemeProvider>;
 }

@@ -6,7 +6,7 @@ import React, { FC, useState } from 'react';
 import { SfxPath } from '../../../constants/Sounds';
 import AudioIcon from '../icons/AudioIcon';
 import AudioMuteIcon from '../icons/AudioMuteIcon';
-import KrausSfxButton from '../KrausSfxButton/KrausSfxButton';
+import KrausSfxButton from '../KrausSfxComponents/KrausSfxButton/KrausSfxButton';
 
 const KrausAudioSwitcher: FC = () => {
   const t = useTranslations('navbar.settings_layout.audio_switcher');

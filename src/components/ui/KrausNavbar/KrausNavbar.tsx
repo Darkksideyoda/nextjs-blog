@@ -26,7 +26,7 @@ const KrausNavbar: FC<KrausNavbarProps> = (props: KrausNavbarProps) => {
           </label>
         </div>
         <div className="mx-2 px-2 max-lg:hidden">
-          <Image className="mask mask-squircle w-11" alt="Logo" src={LogoImage} />
+          <Image loading="eager" className="mask mask-squircle w-11" alt="Logo" src={LogoImage} />
         </div>
       </div>
       <div>
