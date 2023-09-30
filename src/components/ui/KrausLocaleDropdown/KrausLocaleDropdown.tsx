@@ -1,81 +1,90 @@
-'use client';
+// 'use client';
 
-import { usePathname } from 'next/navigation';
-import { useRouter } from 'next/navigation';
-import { useLocale } from 'next-intl';
-import { useTheme } from 'next-themes';
-import React, { useState, useTransition } from 'react';
+// import { DropdownItem } from '@nextui-org/react';
+// import clsx from 'clsx';
+// import { redirect, usePathname } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
+// import { useLocale, useTranslations } from 'next-intl';
+// import React, { useEffect, useMemo, useTransition } from 'react';
+// import { MdTranslate } from 'react-icons/md';
+// import { useLocalStorage } from 'react-use';
 
-import TurkeyFlagIcon from '../../../../public/Images/turkey_flag.png';
-import UsaFlagIcon from '../../../../public/Images/usa_flag.png';
-import { SfxPath } from '../../../constants/Sounds';
-import TranslationIcon from '../icons/TranslationIcon';
-import KrausSfxDiv from '../KrausSfxComponents/KrausSfxDiv/KrausSfxDiv';
-import KrausTranslationLoader from '../KrausTranslationLoader/KrausTranslationLoader';
-import KrausLocaleDropdownMenuItem from './KrausLocaleDropdownMenuItem';
+// import TurkeyFlagIcon from '../../../../public/Images/turkey_flag.png';
+// import UsaFlagIcon from '../../../../public/Images/usa_flag.png';
+// import { useLanguageStore } from '../../../store/slices/languageSlice';
+// import KrausIconDropdown from '../KrausIconDropdown/KrausIconDropdown';
+// import TransilationLoader from '../KrausTranslationLoader/TransilationLoader';
+// import KrausLocaleDropdownMenuItem from './KrausLocaleDropdownMenuItem';
 
-function KrausLocaleDropdown() {
-  const { theme } = useTheme();
-  const [, startTransition] = useTransition();
-  const locale = useLocale();
-  const router = useRouter();
-  const pathname = usePathname();
+// function KrausLocaleDropdown() {
+//   const t = useTranslations('navbar.settings_layout.locale_dropdown');
 
-  const onLanguageChange = (selectedLanguage: string) => {
-    const currentPath = pathname;
-    const newPath = currentPath.replace(/^\/\w+/, `/${selectedLanguage}`);
-    startTransition(() => {
-      router.replace(newPath);
-    });
-    localStorage.setItem('bk_locale', selectedLanguage);
-  };
+//   const [isPending, startTransition] = useTransition();
+//   const locale = useLocale();
+//   const router = useRouter();
+//   const pathname = usePathname();
+//   const [localTranslation, setLocalTranslation] = useLocalStorage<string>('bk_locale', 'en');
+//   const { setUserLanguage } = useLanguageStore();
 
-  const [showLoader, setShowLoader] = useState(false);
+//   const onLanguageChange = (selectedLanguage: string) => {
+//     const currentPath = pathname;
+//     const newPath = currentPath.replace(/^\/\w+/, `/${selectedLanguage}`);
+//     startTransition(() => {
+//       router.replace(newPath);
+//     });
+//     setUserLanguage(selectedLanguage);
+//     setLocalTranslation(selectedLanguage);
+//   };
 
-  const handleOnClick = (languageOption: string) => {
-    setShowLoader(true);
+//   useEffect(() => {
+//     if (localTranslation !== locale) {
+//       if (locale === 'tr' || locale === 'en') {
+//         setUserLanguage(locale);
+//         setLocalTranslation(locale);
+//       }
+//       return redirect('/');
+//     }
+//   }, [localTranslation, locale, pathname, setLocalTranslation, setUserLanguage]);
 
-    const modelInterval = setInterval(() => {
-      window.my_modal_1.showModal();
-    });
+//   const disabledKeys = useMemo(() => (locale === 'en' ? 'English Dropdown Item' : 'Turkish Dropdown Item'), [locale]);
 
-    const modelTimeOut = setTimeout(() => {
-      onLanguageChange(languageOption);
-      setShowLoader(false);
-      clearInterval(modelInterval);
-      clearTimeout(modelTimeOut);
-    }, 2000);
-  };
+//   return (
+//     <div role="button" aria-label="Locale Dropdown" className="flex items-center justify-center text-center">
+//       <KrausIconDropdown
+//         name={t('tooltip')}
+//         isBackDrop="blur"
+//         className="font-inter font-bold"
+//         disabledKeys={[disabledKeys]}
+//         dropDownItems={[
+//           <DropdownItem
+//             className={clsx({
+//               'bg-default-500/50': locale === 'en'
+//             })}
+//             onClick={() => onLanguageChange('en')}
+//             key="English Dropdown Item"
+//           >
+//             <KrausLocaleDropdownMenuItem flagIcon={UsaFlagIcon} flagAltText="USA Flag" languageOption="en" />
+//           </DropdownItem>,
 
-  return (
-    <div className="dropdown-bottom dropdown-end dropdown-hover dropdown cursor-pointer">
-      <KrausSfxDiv hoverSfxPath={SfxPath.buttonHoveSfx} tabIndex={0} whileHover={{ scale: 2.1 }}>
-        <TranslationIcon />
-      </KrausSfxDiv>
+//           <DropdownItem
+//             color="secondary"
+//             className={clsx(
+//               {
+//                 'bg-success-500/50': locale === 'tr'
+//               },
+//               'font-bold'
+//             )}
+//             onClick={() => onLanguageChange('tr')}
+//             key="Turkish Dropdown Item"
+//           >
+//             <KrausLocaleDropdownMenuItem flagIcon={TurkeyFlagIcon} flagAltText="Turkey Flag" languageOption="tr" />
+//           </DropdownItem>
+//         ]}
+//         iconComponent={<MdTranslate className="text-white" size={19} />}
+//       />
+//       {isPending && <TransilationLoader isOpen={isPending} />}
+//     </div>
+//   );
+// }
 
-      <ul tabIndex={0} className="dropdown-content menu rounded-box z-[1] my-2 w-32 bg-base-100 shadow">
-        <KrausLocaleDropdownMenuItem
-          locale={locale}
-          theme={theme}
-          flagIcon={UsaFlagIcon}
-          flagAltText="USA Flag"
-          languageOption="en"
-          onClick={handleOnClick}
-        />
-
-        <KrausLocaleDropdownMenuItem
-          locale={locale}
-          theme={theme}
-          flagIcon={TurkeyFlagIcon}
-          flagAltText="Turkey Flag"
-          languageOption="tr"
-          onClick={handleOnClick}
-        />
-      </ul>
-
-      {showLoader && <KrausTranslationLoader />}
-    </div>
-  );
-}
-
-export default KrausLocaleDropdown;
+// export default KrausLocaleDropdown;

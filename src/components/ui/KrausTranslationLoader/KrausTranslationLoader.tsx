@@ -1,3 +1,5 @@
+'use client';
+
 import { Environment } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import React, { FC, useEffect, useState } from 'react';
@@ -18,16 +20,10 @@ const KrausTranslationLoader: FC<KrausTranslationLoaderProps> = () => {
   }, []);
 
   return (
-    <div className="w-full">
-      <dialog id="my_modal_1" className="modal">
-        <form method="dialog" className="modal-box h-full max-w-full bg-transparent shadow-none">
-          <Canvas>
-            <EarthModel scale={earthModelScale} position={[earthModelPositionX, 0, 0]} />
-            <Environment preset="sunset" />
-          </Canvas>
-        </form>
-      </dialog>
-    </div>
+    <Canvas>
+      <EarthModel scale={earthModelScale} position={[earthModelPositionX, 0, 0]} />
+      <Environment preset="sunset" />
+    </Canvas>
   );
 };
 
