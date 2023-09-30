@@ -1,16 +1,15 @@
 'use client';
 
 import { HTMLMotionProps, motion } from 'framer-motion';
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
+import { useLocalStorage } from 'react-use';
 import useSound from 'use-sound';
 
-import { KrausSfxContext, KrausSfxContextParams } from '../Context';
-
 interface KrausSfxDivProps extends HTMLMotionProps<'div'> {
-  hoverSfxPath?: string;
-  clickSfxPath?: string;
   hoverVolume?: number;
   clickVolume?: number;
+  isPlayClickSound?: boolean;
+  isPlayHoverSound?: boolean;
   onClick?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
@@ -19,24 +18,25 @@ interface KrausSfxDivProps extends HTMLMotionProps<'div'> {
 const KrausSfxDiv: FC<KrausSfxDivProps> = (props: KrausSfxDivProps) => {
   const {
     children,
-    clickSfxPath,
     clickVolume = 1.5,
-    hoverSfxPath,
     hoverVolume = 1.5,
+    isPlayClickSound = false,
+    isPlayHoverSound = true,
     onClick,
     onMouseEnter,
     onMouseLeave,
     ...rest
   } = props;
 
-  const { isSfxEnabled } = useContext<KrausSfxContextParams>(KrausSfxContext);
+  const [isSfxEnabled] = useLocalStorage<boolean>('bk_useSound', true);
 
-  const [playHoverSfx, { stop: stopHoverSfx }] = useSound(hoverSfxPath ?? '', {
-    volume: isSfxEnabled === 'true' ? hoverVolume : 0
+  const [playHoverSfx, { stop: stopHoverSfx }] = useSound('/Sounds/buttonHoverSfx.mp3' ?? '', {
+    volume: isSfxEnabled === true && isPlayHoverSound ? hoverVolume : 0
   });
-  const [playClickSfx] = useSound(clickSfxPath ?? '', {
-    volume: isSfxEnabled === 'true' ? clickVolume : 0
+  const [playClickSfx] = useSound('/Sounds/buttonClickSfx.mp3' ?? '', {
+    volume: isSfxEnabled === true && isPlayClickSound ? clickVolume : 0
   });
+
   const handleOnMouseEnter = () => {
     playHoverSfx();
     onMouseEnter?.();

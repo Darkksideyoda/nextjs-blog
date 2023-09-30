@@ -1,41 +1,33 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
+import { RxSpeakerLoud, RxSpeakerOff } from 'react-icons/rx';
+import { useLocalStorage } from 'react-use';
 
-import { SfxPath } from '../../../constants/Sounds';
-import AudioIcon from '../icons/AudioIcon';
-import AudioMuteIcon from '../icons/AudioMuteIcon';
 import KrausSfxButton from '../KrausSfxComponents/KrausSfxButton/KrausSfxButton';
 
 const KrausAudioSwitcher: FC = () => {
-  const t = useTranslations('navbar.settings_layout.audio_switcher');
+  const [localAudioState, setLocalAudioState] = useLocalStorage<boolean>('bk_useSound');
 
-  const [localAudioState, setLocalAudioState] = useState<string>(localStorage.getItem('bk_useSound') as string);
   const handleAudioSwitcherOnClick = async () => {
-    await window.location.reload();
+    // await window.location.reload();
 
-    if (localAudioState === 'true') {
-      setLocalAudioState('false');
-      return localStorage.setItem('bk_useSound', 'false');
+    if (localAudioState === true) {
+      return setLocalAudioState(false);
     }
-    setLocalAudioState('true');
-    return localStorage.setItem('bk_useSound', 'true');
+    return setLocalAudioState(true);
   };
 
-  const tooltipText = localAudioState === 'true' ? t('mute_audio') : t('unmute_audio');
-
   return (
-    <div className="tooltip-primary my-auto flex h-8 w-8 lg:tooltip lg:tooltip-bottom" data-tip={tooltipText}>
+    <div className="my-auto flex">
       <KrausSfxButton
         whileHover={{ scale: 2.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={handleAudioSwitcherOnClick}
-        hoverSfxPath={SfxPath.buttonHoveSfx}
         name="Audio Switch Button"
         aria-label="Audio Switch Button"
       >
-        {localAudioState === 'true' ? <AudioMuteIcon /> : <AudioIcon />}
+        {localAudioState === true ? <RxSpeakerOff size={17} /> : <RxSpeakerLoud size={17} />}
       </KrausSfxButton>
     </div>
   );
